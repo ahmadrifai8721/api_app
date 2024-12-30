@@ -46,6 +46,7 @@ class _updateMhsState extends State<updateMhs> {
     if (response.statusCode == 200) {
       // Handle successful response
       print('Data submitted successfully');
+      fetchDataMhs();
       Navigator.of(context).pop(true); // Return true to indicate success
     } else {
       // Handle error response
@@ -126,13 +127,5 @@ class _updateMhsState extends State<updateMhs> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _nimController.dispose();
-    _addressController.dispose();
-    super.dispose();
   }
 }

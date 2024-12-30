@@ -1,6 +1,7 @@
 import 'package:api_app/Component/dataMhs.dart';
 import 'package:api_app/updateMhs.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class list_content extends StatelessWidget {
   final dataMhs data;
@@ -82,8 +83,17 @@ class list_content extends StatelessWidget {
                               child: const Text('Cancel'),
                             ),
                             TextButton(
-                              onPressed: () {
+                              onPressed: () async {
                                 // Add delete function here
+                                var url =
+                                    Uri.parse('http://127.0.0.1/index.php');
+                                var response = await http.post(
+                                  url,
+                                  body: {
+                                    'id': data.id.toString(),
+                                    '_METHOD': "DELETE",
+                                  },
+                                );
                                 Navigator.of(context).pop();
                               },
                               child: const Text('Delete'),
